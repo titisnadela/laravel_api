@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\IjinController;
+use App\Http\Controllers\IzinController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,11 +25,14 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/ijins', [IjinController::class, 'index']);
+Route::get('/izins', [IzinController::class, 'index']);
 Route::get('/users', [AuthController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/ijins/{id}', [IjinController::class, 'show']);
+Route::get('/izins/{id}', [IzinController::class, 'show']);
 Route::get('/products/search/{name}', [ProductController::class, 'search']);
 Route::get('/ijins/search/{nik}', [IjinController::class, 'search']);
+Route::get('/izins/search/{nik}', [IzinController::class, 'search']);
 
 
 // Route::resource('ijins', IjinController::class);
@@ -42,11 +46,14 @@ Route::get('/ijins/search/{nik}', [IjinController::class, 'search']);
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/products', [ProductController::class, 'store']); 
-    Route::post('/ijins', [IjinController::class, 'store']);      
+    Route::post('/ijins', [IjinController::class, 'store']);    
+    Route::post('/izins', [IzinController::class, 'store']);  
     Route::put('/products/{id}', [ProductController::class, 'update']);
     Route::put('/ijins/{id}', [IjinController::class, 'update']);
+    Route::put('/izins/{id}', [IzinController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
     Route::delete('/ijins/{id}', [IjinController::class, 'destroy']);
+    Route::delete('/izins/{id}', [IzinController::class, 'destroy']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 

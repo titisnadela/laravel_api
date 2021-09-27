@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIjinsTable extends Migration
+class CreateIzinsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateIjinsTable extends Migration
      */
     public function up()
     {
-        Schema::table('ijins', function (Blueprint $table) {
+        Schema::create('izins', function (Blueprint $table) {
             $table->id();
             $table->string('nik');
             $table->timestamp('waktu_ijin')->nullable()->change();
@@ -31,6 +31,6 @@ class CreateIjinsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ijins');
+        Schema::dropIfExists('izins');
     }
 }
