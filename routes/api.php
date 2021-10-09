@@ -33,6 +33,9 @@ Route::get('/izins/{id}', [IzinController::class, 'show']);
 Route::get('/products/search/{name}', [ProductController::class, 'search']);
 Route::get('/ijins/search/{nik}', [IjinController::class, 'search']);
 Route::get('/izins/search/{nik}', [IzinController::class, 'search']);
+//Route::put('/ijins/{id}', [IjinController::class, 'update']);
+Route::get('/status', [IjinController::class, 'status']);
+Route::put('/status/{id}', [IjinController::class, 'update']);
 
 
 // Route::resource('ijins', IjinController::class);

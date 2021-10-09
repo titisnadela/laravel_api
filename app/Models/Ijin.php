@@ -13,6 +13,7 @@ class Ijin extends Model
         'waktu_ijin',
         'mesin',
         'keterangan',
-        'waktu_kembali'
+        'waktu_kembali',
+        'status'
     ];
 }

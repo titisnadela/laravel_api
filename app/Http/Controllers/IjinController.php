@@ -18,7 +18,11 @@ class IjinController extends Controller
         // $todayDate = Carbon::now();
         // dd($todayDate);
         
-        return Ijin::all();
+        // $database = DB::table("ijins")->orderByRaw("DATE_FORMAT('d-m-Y',startDate), ASC")->get();
+        // return $database;
+        // return Ijin::all()->sortByDesc("id");
+
+        return Ijin::orderByDesc('id')->get();
     }
 
     /**
@@ -37,17 +41,16 @@ class IjinController extends Controller
             'waktu_kembali' => 'required'
         ]);
 
-        // $todayDate = Carbon::now([
-        //     'waktu_ijin' => dd($todayDate),
-        //     'waktu_kembali' => dd($todayDate)
-        // ]);
-
-        // $response = [
-        //     'waktu_ijin' => $todayDate,
-        //     'waktu_kembali' => $todayDate
-        // ];
         
         return Ijin::create($request->all());
+    }
+
+
+    public function status() {
+
+        $database = Ijin::where("status", "=", 1)->get();
+        //dd($database);
+        return $database;
     }
 
     /**
@@ -70,9 +73,13 @@ class IjinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ijin = Ijin::find($id);
-        $ijin->update($request->all());
-        return $ijin;
+        $database= Ijin::find($id);
+        $database->status= 2;
+        $database->save();
+        
+        // $ijin = Ijin::find($id);
+        // $ijin->update($request->all());
+        // return $ijin;
     }
 
     /**
